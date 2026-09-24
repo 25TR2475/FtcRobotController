@@ -38,16 +38,28 @@ public class MotorTest extends OpMode{
 
     }
 
-    public void Motor(double speedY, double speedX, double rotation){
-        double LF = -((speedY - speedX - rotation) / 3);
-        double LB = -((speedY + speedX - rotation) / 3);
-        double RF = (speedY + speedX + rotation) / 3;
-        double RB = (speedY - speedX + rotation) / 3;
-        double Max = Math.max(Math.max(Math.abs(LF),Math.abs(LB)),Math.max(Math.abs(RF),Math.abs(RB)));
-        LF *= 1/Max;
-        LB *= 1/Max;
-        RF *= 1/Max;
-        RB *= 1/Max;
+    public void Motor(double speedY, double speedX, double rotation, boolean boost){
+        double LF = -((speedY - speedX) / 2);
+        double LB = -((speedY + speedX) / 2);
+        double RF = (speedY + speedX) / 2;
+        double RB = (speedY - speedX) / 2;
+
+        if(rotation != 0){
+            LF = (LF + rotation) / 2;
+            LB = (LB + rotation) / 2;
+            RF = (RF + rotation) / 2;
+            RB = (RB + rotation) / 2;
+        }
+
+        if(boost){
+            double Max = Math.max(Math.max(Math.abs(LF),Math.abs(LB)),Math.max(Math.abs(RF),Math.abs(RB)));
+            LF *= 1/Max;
+            LB *= 1/Max;
+            RF *= 1/Max;
+            RB *= 1/Max;
+        }
+
+
         LFmotor.setPower(LF);
         LBmotor.setPower(LB);
         RFmotor.setPower(RF);

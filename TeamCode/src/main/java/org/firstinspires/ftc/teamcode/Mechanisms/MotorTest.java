@@ -43,6 +43,11 @@ public class MotorTest extends OpMode{
         double LB = -((speedY + speedX - rotation) / 3);
         double RF = (speedY + speedX + rotation) / 3;
         double RB = (speedY - speedX + rotation) / 3;
+        double Max = Math.max(Math.max(Math.abs(LF),Math.abs(LB)),Math.max(Math.abs(RF),Math.abs(RB)));
+        LF *= 1/Max;
+        LB *= 1/Max;
+        RF *= 1/Max;
+        RB *= 1/Max;
         LFmotor.setPower(LF);
         LBmotor.setPower(LB);
         RFmotor.setPower(RF);

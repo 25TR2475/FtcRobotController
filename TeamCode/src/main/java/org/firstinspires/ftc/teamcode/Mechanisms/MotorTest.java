@@ -39,13 +39,13 @@ public class MotorTest extends OpMode{
     }
 
     public void Motor(double speedY, double speedX){
-        double LF = (speedY - speedX) / 2;
-        double LB = (speedY + speedX) / 2;
+        double LF = -((speedY - speedX) / 2);
+        double LB = -((speedY + speedX) / 2);
         double RF = (speedY + speedX) / 2;
         double RB = (speedY - speedX) / 2;
         LFmotor.setPower(LF);
         LBmotor.setPower(LB);
-        RFmotor.setPower(-RF);
-        RBmotor.setPower(-RB);
+        RFmotor.setPower(RF);
+        RBmotor.setPower(RB);
     }
 }

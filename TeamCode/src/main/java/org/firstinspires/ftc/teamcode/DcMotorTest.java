@@ -18,12 +18,6 @@ public class DcMotorTest extends OpMode {
 
     @Override
     public void loop(){
-
-        if(gamepad1.left_stick_y > 0){
-            bench.motorSpeed(1);
-        }
-        if(gamepad1.left_stick_y < 0){
-            bench.motorSpeed(0);
-        }
+        bench.motorSpeed(-gamepad1.left_stick_y);
     }
 }

@@ -21,5 +21,8 @@ public class DcMotorTest extends OpMode {
         if (Math.abs(gamepad1.left_stick_y) > 0.2 || Math.abs(gamepad1.right_stick_x) > 0.2){
             bench.Motor(gamepad1.left_stick_y,gamepad1.left_stick_x);
         }
+        else{
+            bench.Motor(0,0);
+        }
     }
 }

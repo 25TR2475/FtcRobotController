@@ -17,13 +17,13 @@ public class Auto extends OpMode {
         bench.init2(hardwareMap);
         timer.startTime();
         while (timer.time() < 1){
-            bench.Motor(1,0,0,false);
+            bench.Motor(-1,0,0,false);
         }
         while (timer.time() < 2){
             bench.Motor(0,1,0,false);
         }
         while (timer.time() < 3){
-            bench.Motor(-1,0,0,false);
+            bench.Motor(1,0,0,false);
         }
         while (timer.time() < 4){
             bench.Motor(0,-1,0,false);

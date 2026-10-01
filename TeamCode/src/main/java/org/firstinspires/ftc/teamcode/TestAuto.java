@@ -15,15 +15,19 @@ public class TestAuto extends OpMode {
 
     public void init(){
         bench.init2(hardwareMap);
+        int count = 0;
+        while (gamepad1.left_trigger_pressed == false){
+            if (gamepad1.dpad_up){
+                count++;
+            }
+            if (gamepad1.dpad_down){
+                count--;
+            }
+            telemetry.addData("Amount", count);
+        }
         timer.startTime();
-        while (timer.time() < 1){
+        while (timer.time() < count){
             bench.Motor(-1,0,0,false);
-        }
-        while (timer.time() < 2){
-            bench.Motor(0,0,0,false);
-        }
-        while (timer.time() < 3){
-            bench.Motor(1,0,0,false);
         }
         bench.Motor(0,0,0,false);
     }

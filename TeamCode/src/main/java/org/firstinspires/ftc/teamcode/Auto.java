@@ -31,6 +31,7 @@ public class Auto extends OpMode {
         while (timer.time() < 5){
             bench.Motor(0,0,1,false);
         }
+        bench.Motor(0,0,0,false);
     }
 
     public void loop() { }

@@ -28,8 +28,11 @@ public class Auto extends OpMode {
         while (timer.time() < 4){
             bench.Motor(0,-1,0,false);
         }
-        while (timer.time() < 5){
+        while (timer.time() < 5.2){
             bench.Motor(0,0,1,false);
+        }
+        while (timer.time() < 6.4){
+            bench.Motor(0,0,-1,false);
         }
         bench.Motor(0,0,0,false);
     }

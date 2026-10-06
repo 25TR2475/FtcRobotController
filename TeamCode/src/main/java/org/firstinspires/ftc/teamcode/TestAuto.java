@@ -41,14 +41,14 @@ public class TestAuto extends OpMode {
         if (gamepad1.rightBumperWasPressed()){
             Rcount++;
         }
-        if (gamepad1.leftBumperWasPressed()){
-            Rcount--;
-        }
+        //if (gamepad1.leftBumperWasPressed()){
+        //    Rcount--;
+        //}
         telemetry.addData("Y-Movement", Ycount);
         telemetry.addData("X-Movement", Xcount);
         telemetry.addData("Rotation", Rcount);
 
-        if (gamepad1.xWasPressed()){
+        if (gamepad1.leftBumperWasPressed()){
             if (Ycount > 0){
                 timer.startTime();
                 while (timer.time() < Ycount * forwConst){
@@ -57,7 +57,7 @@ public class TestAuto extends OpMode {
             }
             if (Ycount < 0){
                 timer.startTime();
-                while (timer.time() < Ycount * backConst){
+                while (timer.time() < -Ycount * backConst){
                     bench.Motor(-1,0,0,false);
                 }
             }
@@ -70,7 +70,7 @@ public class TestAuto extends OpMode {
             }
             if (Xcount < 0){
                 timer.startTime();
-                while (timer.time() < Xcount * strafeConst){
+                while (timer.time() < -Xcount * strafeConst){
                     bench.Motor(0,-1,0,false);
                 }
             }
@@ -83,7 +83,7 @@ public class TestAuto extends OpMode {
             }
             if (Rcount < 0){
                 timer.startTime();
-                while (timer.time() < Rcount * spinConst){
+                while (timer.time() < -Rcount * spinConst){
                     bench.Motor(0,0,-1,false);
                 }
             }

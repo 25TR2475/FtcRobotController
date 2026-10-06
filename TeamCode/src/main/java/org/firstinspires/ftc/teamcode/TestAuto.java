@@ -53,42 +53,51 @@ public class TestAuto extends OpMode {
 
         if (gamepad1.leftTriggerWasPressed()){
             testValue = 0;
-            if (Ycount > 0){
-                timer.startTime();
-                while (timer.time() < Ycount * forwConst){
-                    bench.Motor(1,0,0,false);
-                }
+
+            while (Ycount != 0){
+                bench.Motor(1,0,0,false);
+                while (timer.time() < 1){ }
+                Ycount--;
+                timer.reset();
             }
-            if (Ycount < 0){
-                timer.startTime();
-                while (timer.time() < -Ycount * backConst){
-                    bench.Motor(-1,0,0,false);
-                }
-            }
-            if (Xcount > 0){
-                timer.startTime();
-                while (timer.time() < Xcount * strafeConst){
-                    bench.Motor(0,1,0,false);
-                }
-            }
-            if (Xcount < 0){
-                timer.startTime();
-                while (timer.time() < -Xcount * strafeConst){
-                    bench.Motor(0,-1,0,false);
-                }
-            }
-            if (Rcount > 0){
-                timer.startTime();
-                while (timer.time() < Rcount * spinConst){
-                    bench.Motor(0,0,1,false);
-                }
-            }
-            if (Rcount < 0){
-                timer.startTime();
-                while (timer.time() < -Rcount * spinConst){
-                    bench.Motor(0,0,-1,false);
-                }
-            }
+
+
+            //if (Ycount > 0){
+            //    timer.startTime();
+            //    while (timer.time() < Ycount * forwConst){//
+            //    bench.Motor(1,0,0,false);
+            //    }
+            //}
+            //if (Ycount < 0){
+            //    timer.startTime();
+            //    while (timer.time() < -Ycount * backConst){
+            //        bench.Motor(-1,0,0,false);
+            //    }
+            //}
+            //if (Xcount > 0){
+            //    timer.startTime();
+            //    while (timer.time() < Xcount * strafeConst){
+            //        bench.Motor(0,1,0,false);
+            //    }
+            //}
+            //if (Xcount < 0){
+            //    timer.startTime();
+            //    while (timer.time() < -Xcount * strafeConst){
+            //        bench.Motor(0,-1,0,false);
+            //    }
+            //}
+            //if (Rcount > 0){
+            //    timer.startTime();
+            //    while (timer.time() < Rcount * spinConst){
+            //        bench.Motor(0,0,1,false);
+            //    }
+            //}
+            //if (Rcount < 0){
+            //    timer.startTime();
+            //    while (timer.time() < -Rcount * spinConst){
+            //        bench.Motor(0,0,-1,false);
+            //    }
+            //}
         }
         bench.Motor(0,0,0,false);
 

@@ -21,6 +21,8 @@ public class TestAuto extends OpMode {
     int Xcount = 0;
     int Rcount = 0;
 
+    int testValue = 0;
+
     public void init(){
     }
 
@@ -39,8 +41,10 @@ public class TestAuto extends OpMode {
             Xcount--;
         }
         if (gamepad1.rightBumperWasPressed()){
+            testValue = 1;
             Rcount++;
         }
+
         //if (gamepad1.leftBumperWasPressed()){
         //    Rcount--;
         //}
@@ -93,5 +97,6 @@ public class TestAuto extends OpMode {
         telemetry.addData("Y-Movement", Ycount);
         telemetry.addData("X-Movement", Xcount);
         telemetry.addData("Rotation", Rcount);
+        telemetry.addData("Should run", testValue);
     }
 }

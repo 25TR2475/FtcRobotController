@@ -56,7 +56,7 @@ public class TestAuto extends OpMode {
 
             while (Ycount != 0){
                 bench.Motor(1,0,0,false);
-                while (timer.time() < 1){ }
+                while (timer.time() < 2){ }
                 Ycount--;
                 timer.reset();
             }

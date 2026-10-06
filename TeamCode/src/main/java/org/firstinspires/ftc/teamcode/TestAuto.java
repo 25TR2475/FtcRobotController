@@ -41,16 +41,17 @@ public class TestAuto extends OpMode {
             Xcount--;
         }
         if (gamepad1.rightBumperWasPressed()){
-            testValue = 1;
             Rcount++;
         }
-
-        //if (gamepad1.leftBumperWasPressed()){
-        //    Rcount--;
-        //}
-
-
         if (gamepad1.leftBumperWasPressed()){
+            Rcount--;
+        }
+        if (gamepad1.rightTriggerWasPressed()){
+            testValue = 1;
+        }
+
+
+        if (gamepad1.leftTriggerWasPressed()){
             testValue = 0;
             if (Ycount > 0){
                 timer.startTime();
@@ -64,7 +65,6 @@ public class TestAuto extends OpMode {
                     bench.Motor(-1,0,0,false);
                 }
             }
-            bench.Motor(0,0,0,false);
             if (Xcount > 0){
                 timer.startTime();
                 while (timer.time() < Xcount * strafeConst){
@@ -77,7 +77,6 @@ public class TestAuto extends OpMode {
                     bench.Motor(0,-1,0,false);
                 }
             }
-            bench.Motor(0,0,0,false);
             if (Rcount > 0){
                 timer.startTime();
                 while (timer.time() < Rcount * spinConst){
@@ -90,7 +89,6 @@ public class TestAuto extends OpMode {
                     bench.Motor(0,0,-1,false);
                 }
             }
-            bench.Motor(0,0,0,false);
         }
         bench.Motor(0,0,0,false);
 

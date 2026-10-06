@@ -36,7 +36,7 @@ public class TestAuto extends OpMode {
             Xcount++;
         }
         if (gamepad1.dpadLeftWasPressed()){
-            Ycount--;
+            Xcount--;
         }
         if (gamepad1.rightBumperWasPressed()){
             Rcount++;
@@ -48,7 +48,7 @@ public class TestAuto extends OpMode {
         telemetry.addData("X-Movement", Xcount);
         telemetry.addData("Rotation", Rcount);
 
-        if (gamepad1.a){
+        if (gamepad1.circleWasPressed()){
             if (Ycount > 0){
                 timer.startTime();
                 while (timer.time() < Ycount * forwConst){

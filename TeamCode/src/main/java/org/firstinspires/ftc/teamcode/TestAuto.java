@@ -26,22 +26,22 @@ public class TestAuto extends OpMode {
 
     public void loop() {
         bench.init2(hardwareMap);
-        if (gamepad1.dpad_up){
+        if (gamepad1.dpadUpWasPressed()){
             Ycount++;
         }
-        if (gamepad1.dpad_down){
+        if (gamepad1.dpadDownWasPressed()){
             Ycount--;
         }
-        if (gamepad1.dpad_right){
+        if (gamepad1.dpadRightWasPressed()){
             Xcount++;
         }
-        if (gamepad1.dpad_left){
+        if (gamepad1.dpadLeftWasPressed()){
             Ycount--;
         }
-        if (gamepad1.right_bumper){
+        if (gamepad1.rightBumperWasPressed()){
             Rcount++;
         }
-        if (gamepad1.left_bumper){
+        if (gamepad1.leftBumperWasPressed()){
             Rcount--;
         }
         telemetry.addData("Y-Movement", Ycount);

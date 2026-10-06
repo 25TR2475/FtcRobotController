@@ -54,9 +54,9 @@ public class TestAuto extends OpMode {
         if (gamepad1.leftTriggerWasPressed()){
             testValue = 0;
 
-            while (Ycount != 0){
-                bench.Motor(1,0,0,false);
-                while (timer.time() < 2){ }
+            while (Ycount > 0){
+                bench.Motor(-1,0,0,false);
+                while (timer.time() < 1){ }
                 Ycount--;
                 timer.reset();
             }

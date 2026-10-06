@@ -8,7 +8,7 @@ import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
 import org.firstinspires.ftc.teamcode.Mechanisms.MotorTest;
-@Autonomous
+@TeleOp
 public class TestAuto extends OpMode {
     ElapsedTime timer = new ElapsedTime();
     MotorTest bench = new MotorTest();
@@ -17,110 +17,78 @@ public class TestAuto extends OpMode {
     double backConst = 0.8;
     double strafeConst = 1;
     double spinConst = 0.4;
+    int Ycount = 0;
+    int Xcount = 0;
+    int Rcount = 0;
 
     public void init(){
+    }
+
+    public void loop() {
         bench.init2(hardwareMap);
-        int count = 0;
-        while (!gamepad1.left_trigger_pressed){
-            if (gamepad1.dpad_up){
-                count++;
-            }
-            if (gamepad1.dpad_down){
-                count--;
-            }
-            telemetry.addData("fAmount: ", count);
+        if (gamepad1.dpad_up){
+            Ycount++;
         }
-        timer.startTime();
-        while (timer.time() < count * forwConst){
-            bench.Motor(-1,0,0,false);
+        if (gamepad1.dpad_down){
+            Ycount--;
         }
-        bench.Motor(0,0,0,false);
+        if (gamepad1.dpad_right){
+            Xcount++;
+        }
+        if (gamepad1.dpad_left){
+            Ycount--;
+        }
+        if (gamepad1.right_bumper){
+            Rcount++;
+        }
+        if (gamepad1.left_bumper){
+            Rcount--;
+        }
+        telemetry.addData("Y-Movement", Ycount);
+        telemetry.addData("X-Movement", Xcount);
+        telemetry.addData("Rotation", Rcount);
 
-        timer.reset();
-        count = 0;
-        while (!gamepad1.left_trigger_pressed){
-            if (gamepad1.dpad_up){
-                count++;
+        if (gamepad1.a){
+            if (Ycount > 0){
+                timer.startTime();
+                while (timer.time() < Ycount * forwConst){
+                    bench.Motor(1,0,0,false);
+                }
             }
-            if (gamepad1.dpad_down){
-                count--;
+            if (Ycount < 0){
+                timer.startTime();
+                while (timer.time() < Ycount * backConst){
+                    bench.Motor(-1,0,0,false);
+                }
             }
-            telemetry.addData("bAmount: ", count);
-        }
-        timer.startTime();
-        while (timer.time() < count * backConst){
-            bench.Motor(1,0,0,false);
-        }
-        bench.Motor(0,0,0,false);
-
-        timer.reset();
-        count = 0;
-        while (!gamepad1.left_trigger_pressed){
-            if (gamepad1.dpad_up){
-                count++;
+            bench.Motor(0,0,0,false);
+            if (Xcount > 0){
+                timer.startTime();
+                while (timer.time() < Xcount * strafeConst){
+                    bench.Motor(0,1,0,false);
+                }
             }
-            if (gamepad1.dpad_down){
-                count--;
+            if (Xcount < 0){
+                timer.startTime();
+                while (timer.time() < Xcount * strafeConst){
+                    bench.Motor(0,-1,0,false);
+                }
             }
-            telemetry.addData("rAmount: ", count);
-        }
-        timer.startTime();
-        while (timer.time() < count * strafeConst){
-            bench.Motor(0,1,0,false);
-        }
-        bench.Motor(0,0,0,false);
-
-        timer.reset();
-        count = 0;
-        while (!gamepad1.left_trigger_pressed){
-            if (gamepad1.dpad_up){
-                count++;
+            bench.Motor(0,0,0,false);
+            if (Rcount > 0){
+                timer.startTime();
+                while (timer.time() < Rcount * spinConst){
+                    bench.Motor(0,0,1,false);
+                }
             }
-            if (gamepad1.dpad_down){
-                count--;
+            if (Rcount < 0){
+                timer.startTime();
+                while (timer.time() < Rcount * spinConst){
+                    bench.Motor(0,0,-1,false);
+                }
             }
-            telemetry.addData("lAmount: ", count);
-        }
-        timer.startTime();
-        while (timer.time() < count * strafeConst){
-            bench.Motor(0,-1,0,false);
-        }
-        bench.Motor(0,0,0,false);
-
-        timer.reset();
-        count = 0;
-        while (!gamepad1.left_trigger_pressed){
-            if (gamepad1.dpad_up){
-                count++;
-            }
-            if (gamepad1.dpad_down){
-                count--;
-            }
-            telemetry.addData("clockAmount(30*): ", count);
-        }
-        timer.startTime();
-        while (timer.time() < count * spinConst){
-            bench.Motor(0,0,1,false);
-        }
-        bench.Motor(0,0,0,false);
-
-        timer.reset();
-        count = 0;
-        while (!gamepad1.left_trigger_pressed){
-            if (gamepad1.dpad_up){
-                count++;
-            }
-            if (gamepad1.dpad_down){
-                count--;
-            }
-            telemetry.addData("anticlockAmount(30*): ", count);
-        }
-        timer.startTime();
-        while (timer.time() < count * spinConst){
-            bench.Motor(0,0,-1,false);
+            bench.Motor(0,0,0,false);
         }
         bench.Motor(0,0,0,false);
     }
-
-    public void loop() { }
 }

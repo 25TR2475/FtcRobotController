@@ -48,7 +48,7 @@ public class TestAuto extends OpMode {
         telemetry.addData("X-Movement", Xcount);
         telemetry.addData("Rotation", Rcount);
 
-        if (gamepad1.circleWasPressed()){
+        if (gamepad1.xWasPressed()){
             if (Ycount > 0){
                 timer.startTime();
                 while (timer.time() < Ycount * forwConst){

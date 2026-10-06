@@ -44,9 +44,7 @@ public class TestAuto extends OpMode {
         //if (gamepad1.leftBumperWasPressed()){
         //    Rcount--;
         //}
-        telemetry.addData("Y-Movement", Ycount);
-        telemetry.addData("X-Movement", Xcount);
-        telemetry.addData("Rotation", Rcount);
+
 
         if (gamepad1.leftBumperWasPressed()){
             telemetry.addData("Should run", 0);
@@ -91,5 +89,9 @@ public class TestAuto extends OpMode {
             bench.Motor(0,0,0,false);
         }
         bench.Motor(0,0,0,false);
+
+        telemetry.addData("Y-Movement", Ycount);
+        telemetry.addData("X-Movement", Xcount);
+        telemetry.addData("Rotation", Rcount);
     }
 }

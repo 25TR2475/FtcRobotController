@@ -49,6 +49,7 @@ public class TestAuto extends OpMode {
         telemetry.addData("Rotation", Rcount);
 
         if (gamepad1.leftBumperWasPressed()){
+            telemetry.addData("Should run", 0);
             if (Ycount > 0){
                 timer.startTime();
                 while (timer.time() < Ycount * forwConst){

@@ -8,6 +8,7 @@ import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
 import org.firstinspires.ftc.teamcode.Mechanisms.MotorTest;
+import org.firstinspires.ftc.teamcode.Mechanisms.ourTime;
 
 import java.util.Arrays;
 
@@ -15,6 +16,8 @@ import java.util.Arrays;
 public class TestAuto extends OpMode {
     ElapsedTime timer = new ElapsedTime();
     MotorTest bench = new MotorTest();
+
+    ourTime Time = new ourTime();
 
     double forwConst = 1;
     double backConst = 0.8;
@@ -64,6 +67,13 @@ public class TestAuto extends OpMode {
 
             }
             telemetry.addData("success", true);
+
+
+
+
+            Time.sleep(1000);
+
+
 //            int Y = 0;
 //            int X = 0;
 //            int Z = 0;

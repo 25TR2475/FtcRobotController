@@ -17,7 +17,9 @@ public class TestAuto extends OpMode {
     ElapsedTime timer = new ElapsedTime();
     MotorTest bench = new MotorTest();
 
+    /////////////////////////////
     ourTime Time = new ourTime();
+    /////////////////////////////
 
     double forwConst = 1;
     double backConst = 0.8;
@@ -70,8 +72,9 @@ public class TestAuto extends OpMode {
 
 
 
-
+            /////////////////////////////
             Time.sleep(1000);
+            /////////////////////////////
 
 
 //            int Y = 0;

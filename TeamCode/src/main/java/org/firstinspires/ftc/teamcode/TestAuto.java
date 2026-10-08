@@ -8,6 +8,9 @@ import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
 import org.firstinspires.ftc.teamcode.Mechanisms.MotorTest;
+
+import java.util.Arrays;
+
 @TeleOp
 public class TestAuto extends OpMode {
     ElapsedTime timer = new ElapsedTime();
@@ -17,9 +20,10 @@ public class TestAuto extends OpMode {
     double backConst = 0.8;
     double strafeConst = 1;
     double spinConst = 0.4;
-    int Ycount = 0;
-    int Xcount = 0;
-    int Rcount = 0;
+
+
+    int[] variables = new int[3];
+    int maxVar = 0;
 
     public void init(){
     }
@@ -27,34 +31,120 @@ public class TestAuto extends OpMode {
     public void loop() {
         bench.init2(hardwareMap);
         if (gamepad1.dpadUpWasPressed()){
-            Ycount++;
+            variables[0]++;
         }
         if (gamepad1.dpadDownWasPressed()){
-            Ycount--;
+            variables[0]--;
         }
         if (gamepad1.dpadRightWasPressed()){
-            Xcount++;
+            variables[1]++;
         }
         if (gamepad1.dpadLeftWasPressed()){
-            Xcount--;
+            variables[1]--;
         }
         if (gamepad1.rightBumperWasPressed()){
-            Rcount++;
+            variables[2]++;
         }
         if (gamepad1.leftBumperWasPressed()){
-            Rcount--;
+            variables[2]--;
         }
 
+        for(int i = 0; i < variables.length; i++){
+            if(Math.abs(variables[i]) > maxVar){
+                maxVar = variables[i];
+            }
+        }
 
-        if (gamepad1.leftTriggerWasPressed()){
-            while (Ycount > 0){
-                bench.Motor(-1,0,0,false);
-                while (timer.time() < 1){ }
-                Ycount--;
-                timer.reset();
+        if (gamepad1.leftTriggerWasReleased()){
+            int Y = 0;
+            int X = 0;
+            int Z = 0;
+            if(variables[0] > 0){
+                Y = 1;
+                variables[0]--;
+            }
+            if(variables[0] < 0){
+                Y = -1;
+                variables[0]++;
+            }
+            if(variables[1] > 0){
+                X = 1;
+                variables[1]--;
+            }
+            if(variables[1] < 0){
+                X = -1;
+                variables[1]++;
+            }
+            if(variables[2] > 0){
+                Z = 1;
+                variables[2]--;
+            }
+            if(variables[2] < 0){
+                Z = -1;
+                variables[2]++;
             }
 
+            int timerIncrement = 1;
 
+            timer.reset();
+            timer.startTime();
+            while (timer.time() < maxVar){
+                Y = 0;
+                X = 0;
+                Z = 0;
+
+                if(timer.time() > timerIncrement){
+                    if(variables[0] > 0){
+                        Y = 1;
+                        variables[0]--;
+                    }
+                    if(variables[0] < 0){
+                        Y = -1;
+                        variables[0]++;
+                    }
+                    if(variables[1] > 0){
+                        X = 1;
+                        variables[1]--;
+                    }
+                    if(variables[1] < 0){
+                        X = -1;
+                        variables[1]++;
+                    }
+                    if(variables[2] > 0){
+                        Z = 1;
+                        variables[2]--;
+                    }
+                    if(variables[2] < 0){
+                        Z = -1;
+                        variables[2]++;
+                    }
+                    timerIncrement++;
+                }
+
+                if (Y > 0) {
+                    Y *= forwConst;
+                }
+                if(Y < 0){
+                    Y *= backConst;
+                }
+                if(X > 0){
+                    X *= strafeConst;
+                }
+                if(X < 0){
+                    X *= strafeConst;
+                }
+                if(Z > 0){
+                    Z *= spinConst;
+                }
+                if(Z < 0){
+                    Z *= spinConst;
+                }
+
+                bench.Motor(Y,X,Z,false);
+            }
+            timer.reset();
+
+            Arrays.fill(variables, 0);
             //if (Ycount > 0){
             //    timer.startTime();
             //    while (timer.time() < Ycount * forwConst){//
@@ -92,10 +182,14 @@ public class TestAuto extends OpMode {
             //    }
             //}
         }
-        bench.Motor(0,0,0,false);
+        else{
 
-        telemetry.addData("Y-Movement", Ycount);
-        telemetry.addData("X-Movement", Xcount);
-        telemetry.addData("Rotation", Rcount);
+            bench.Motor(0,0,0,false);
+        }
+
+        telemetry.addData("Y-Movement", variables[0]);
+        telemetry.addData("X-Movement", variables[1]);
+        telemetry.addData("Rotation", variables[2]);
+        telemetry.addData("maxVar", maxVar);
     }
 }

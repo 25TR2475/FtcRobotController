@@ -55,141 +55,118 @@ public class TestAuto extends OpMode {
             }
         }
 
-        if (gamepad1.leftTriggerWasReleased()){
-            int Y = 0;
-            int X = 0;
-            int Z = 0;
-            if(variables[0] > 0){
-                Y = 1;
-                variables[0]--;
-            }
-            if(variables[0] < 0){
-                Y = -1;
-                variables[0]++;
-            }
-            if(variables[1] > 0){
-                X = 1;
-                variables[1]--;
-            }
-            if(variables[1] < 0){
-                X = -1;
-                variables[1]++;
-            }
-            if(variables[2] > 0){
-                Z = 1;
-                variables[2]--;
-            }
-            if(variables[2] < 0){
-                Z = -1;
-                variables[2]++;
-            }
-
+        if (gamepad1.circle){
             int timerIncrement = 1;
-
             timer.reset();
             timer.startTime();
-            while (timer.time() < maxVar){
-                Y = 0;
-                X = 0;
-                Z = 0;
+            while(timer.time() < 3){
 
-                if(timer.time() > timerIncrement){
-                    if(variables[0] > 0){
-                        Y = 1;
-                        variables[0]--;
-                    }
-                    if(variables[0] < 0){
-                        Y = -1;
-                        variables[0]++;
-                    }
-                    if(variables[1] > 0){
-                        X = 1;
-                        variables[1]--;
-                    }
-                    if(variables[1] < 0){
-                        X = -1;
-                        variables[1]++;
-                    }
-                    if(variables[2] > 0){
-                        Z = 1;
-                        variables[2]--;
-                    }
-                    if(variables[2] < 0){
-                        Z = -1;
-                        variables[2]++;
-                    }
-                    timerIncrement++;
-                }
 
-                if (Y > 0) {
-                    Y *= forwConst;
-                }
-                if(Y < 0){
-                    Y *= backConst;
-                }
-                if(X > 0){
-                    X *= strafeConst;
-                }
-                if(X < 0){
-                    X *= strafeConst;
-                }
-                if(Z > 0){
-                    Z *= spinConst;
-                }
-                if(Z < 0){
-                    Z *= spinConst;
-                }
-
-                bench.Motor(Y,X,Z,false);
             }
-            timer.reset();
-
-            Arrays.fill(variables, 0);
-            //if (Ycount > 0){
-            //    timer.startTime();
-            //    while (timer.time() < Ycount * forwConst){//
-            //    bench.Motor(1,0,0,false);
-            //    }
-            //}
-            //if (Ycount < 0){
-            //    timer.startTime();
-            //    while (timer.time() < -Ycount * backConst){
-            //        bench.Motor(-1,0,0,false);
-            //    }
-            //}
-            //if (Xcount > 0){
-            //    timer.startTime();
-            //    while (timer.time() < Xcount * strafeConst){
-            //        bench.Motor(0,1,0,false);
-            //    }
-            //}
-            //if (Xcount < 0){
-            //    timer.startTime();
-            //    while (timer.time() < -Xcount * strafeConst){
-            //        bench.Motor(0,-1,0,false);
-            //    }
-            //}
-            //if (Rcount > 0){
-            //    timer.startTime();
-            //    while (timer.time() < Rcount * spinConst){
-            //        bench.Motor(0,0,1,false);
-            //    }
-            //}
-            //if (Rcount < 0){
-            //    timer.startTime();
-            //    while (timer.time() < -Rcount * spinConst){
-            //        bench.Motor(0,0,-1,false);
-            //    }
-            //}
+            telemetry.addData("success", true);
+//            int Y = 0;
+//            int X = 0;
+//            int Z = 0;
+//            if(variables[0] > 0){
+//                Y = 1;
+//                variables[0]--;
+//            }
+//            if(variables[0] < 0){
+//                Y = -1;
+//                variables[0]++;
+//            }
+//            if(variables[1] > 0){
+//                X = 1;
+//                variables[1]--;
+//            }
+//            if(variables[1] < 0){
+//                X = -1;
+//                variables[1]++;
+//            }
+//            if(variables[2] > 0){
+//                Z = 1;
+//                variables[2]--;
+//            }
+//            if(variables[2] < 0){
+//                Z = -1;
+//                variables[2]++;
+//            }
+//
+//            int timerIncrement = 1;
+//
+//            timer.reset();
+//            timer.startTime();
+//            while (timer.time() < maxVar){
+//                Y = 0;
+//                X = 0;
+//                Z = 0;
+//                telemetry.addData("running", true);
+//                if(timer.time() > timerIncrement){
+//                    if(variables[0] > 0){
+//                        Y = 1;
+//                        variables[0]--;
+//                    }
+//                    if(variables[0] < 0){
+//                        Y = -1;
+//                        variables[0]++;
+//                    }
+//                    if(variables[1] > 0){
+//                        X = 1;
+//                        variables[1]--;
+//                    }
+//                    if(variables[1] < 0){
+//                        X = -1;
+//                        variables[1]++;
+//                    }
+//                    if(variables[2] > 0){
+//                        Z = 1;
+//                        variables[2]--;
+//                    }
+//                    if(variables[2] < 0){
+//                        Z = -1;
+//                        variables[2]++;
+//                    }
+//                    telemetry.addData("timerIncrement if success", true);
+//                    timerIncrement++;
+//                }
+//
+//                if (Y > 0) {
+//                    Y *= forwConst;
+//                }
+//                if(Y < 0){
+//                    Y *= backConst;
+//                }
+//                if(X > 0){
+//                    X *= strafeConst;
+//                }
+//                if(X < 0){
+//                    X *= strafeConst;
+//                }
+//                if(Z > 0){
+//                    Z *= spinConst;
+//                }
+//                if(Z < 0){
+//                    Z *= spinConst;
+//                }
+//                telemetry.addData("Y", Y);
+//                telemetry.addData("X", X);
+//                telemetry.addData("Z", Z);
+//                bench.Motor(Y,X,Z,false);
+//            }
+//            timer.reset();
+//            maxVar = 0;
+//            Arrays.fill(variables, 0);
+//            timerIncrement = 0;
+//
         }
         else{
 
             bench.Motor(0,0,0,false);
         }
 
-        telemetry.addData("Y-Movement", variables[0]);
-        telemetry.addData("X-Movement", variables[1]);
-        telemetry.addData("Rotation", variables[2]);
-        telemetry.addData("maxVar", maxVar);
+//        telemetry.addData("Y-Movement", variables[0]);
+//        telemetry.addData("X-Movement", variables[1]);
+//        telemetry.addData("Rotation", variables[2]);
+//        telemetry.addData("maxVar", maxVar);
     }
 }

@@ -21,10 +21,10 @@ public class TestAuto extends OpMode {
     ourTime Time = new ourTime();
     /////////////////////////////
 
-    double forwConst = 0.5;
-    double backConst = 0.8;
+    double forwConst = 1;
+    double backConst = 1;
     double strafeConst = 1;
-    double spinConst = 0.4;
+    double spinConst = 1;
 
 
     int[] variables = new int[3];
@@ -88,7 +88,7 @@ public class TestAuto extends OpMode {
                 Time.sleep((int) (-variables[2] * 1000 * spinConst));
             }
             bench.Motor(0,0,0,false);
-            telemetry.addData("success", true);
+            maxVar = 0;
 
 
 

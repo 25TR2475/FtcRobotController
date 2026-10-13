@@ -39,6 +39,7 @@ public class MotorTest extends OpMode{
     }
 
     public void Motor(double speedY, double speedX, double rotation, boolean boost){
+        speedY = -speedY;
         double LF = -((speedY - speedX) / 2);
         double LB = -((speedY + speedX) / 2);
         double RF = (speedY + speedX) / 2;

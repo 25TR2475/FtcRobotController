@@ -72,20 +72,20 @@ public class TestAuto extends OpMode {
             bench.Motor(0,0,0,false);
             if (variables[1] > 0){
                 bench.Motor(0,1,0,false);
-                Time.sleep((int) (variables[0] * 1000 * strafeConst));
+                Time.sleep((int) (variables[1] * 1000 * strafeConst));
             }
             else if (variables[1] < 0){
                 bench.Motor(0,-1,0,false);
-                Time.sleep((int) (-variables[0] * 1000 * strafeConst));
+                Time.sleep((int) (-variables[1] * 1000 * strafeConst));
             }
             bench.Motor(0,0,0,false);
             if (variables[2] > 0){
                 bench.Motor(0,0,1,false);
-                Time.sleep((int) (variables[0] * 1000 * spinConst));
+                Time.sleep((int) (variables[2] * 1000 * spinConst));
             }
             else if (variables[2] < 0){
                 bench.Motor(0,0,-1,false);
-                Time.sleep((int) (-variables[0] * 1000 * spinConst));
+                Time.sleep((int) (-variables[2] * 1000 * spinConst));
             }
             bench.Motor(0,0,0,false);
             telemetry.addData("success", true);

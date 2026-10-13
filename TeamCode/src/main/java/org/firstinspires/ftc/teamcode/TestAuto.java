@@ -21,7 +21,7 @@ public class TestAuto extends OpMode {
     ourTime Time = new ourTime();
     /////////////////////////////
 
-    double forwConst = 1;
+    double forwConst = 0.5;
     double backConst = 0.8;
     double strafeConst = 1;
     double spinConst = 0.4;

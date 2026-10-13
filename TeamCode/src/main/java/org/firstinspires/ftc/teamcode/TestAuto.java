@@ -204,5 +204,9 @@ public class TestAuto extends OpMode {
 //        telemetry.addData("X-Movement", variables[1]);
 //        telemetry.addData("Rotation", variables[2]);
 //        telemetry.addData("maxVar", maxVar);
+        telemetry.addData("Y-Movement", variables[0]);
+        telemetry.addData("X-Movement", variables[1]);
+        telemetry.addData("Rotation", variables[2]);
+        telemetry.addData("maxVar", maxVar);
     }
 }

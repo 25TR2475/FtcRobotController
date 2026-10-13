@@ -70,7 +70,6 @@ public class TestAuto extends OpMode {
                 Time.sleep((int) (-variables[0] * 1000 * backConst));
             }
             bench.Motor(0,0,0,false);
-            Time.sleep(2000);
             if (variables[1] > 0){
                 bench.Motor(0,1,0,false);
                 Time.sleep((int) (variables[0] * 1000 * forwConst));
@@ -80,7 +79,6 @@ public class TestAuto extends OpMode {
                 Time.sleep((int) (-variables[0] * 1000 * backConst));
             }
             bench.Motor(0,0,0,false);
-            Time.sleep(2000);
             if (variables[2] > 0){
                 bench.Motor(0,0,1,false);
                 Time.sleep((int) (variables[0] * 1000 * forwConst));
@@ -90,13 +88,12 @@ public class TestAuto extends OpMode {
                 Time.sleep((int) (-variables[0] * 1000 * backConst));
             }
             bench.Motor(0,0,0,false);
-            Time.sleep(2000);
             telemetry.addData("success", true);
 
 
 
             /////////////////////////////
-            Time.sleep(1000);
+            //Time.sleep(1000);
             /////////////////////////////
 
 
@@ -200,9 +197,9 @@ public class TestAuto extends OpMode {
             bench.Motor(0,0,0,false);
         }
 
-//        telemetry.addData("Y-Movement", variables[0]);
-//        telemetry.addData("X-Movement", variables[1]);
-//        telemetry.addData("Rotation", variables[2]);
-//        telemetry.addData("maxVar", maxVar);
+        telemetry.addData("Y-Movement", variables[0]);
+        telemetry.addData("X-Movement", variables[1]);
+        telemetry.addData("Rotation", variables[2]);
+        telemetry.addData("maxVar", maxVar);
     }
 }

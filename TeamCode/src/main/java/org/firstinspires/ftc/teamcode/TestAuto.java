@@ -61,13 +61,36 @@ public class TestAuto extends OpMode {
         }
 
         if (gamepad1.circle){
-            int timerIncrement = 1;
-            timer.reset();
-            timer.startTime();
-            while(timer.time() < 3){
-
-
+            if (variables[0] > 0){
+                bench.Motor(1,0,0,false);
+                Time.sleep((int) (variables[0] * 1000 * forwConst));
             }
+            else if (variables[0] < 0){
+                bench.Motor(-1,0,0,false);
+                Time.sleep((int) (-variables[0] * 1000 * backConst));
+            }
+            bench.Motor(0,0,0,false);
+            Time.sleep(2000);
+            if (variables[1] > 0){
+                bench.Motor(0,1,0,false);
+                Time.sleep((int) (variables[0] * 1000 * forwConst));
+            }
+            else if (variables[1] < 0){
+                bench.Motor(0,-1,0,false);
+                Time.sleep((int) (-variables[0] * 1000 * backConst));
+            }
+            bench.Motor(0,0,0,false);
+            Time.sleep(2000);
+            if (variables[2] > 0){
+                bench.Motor(0,0,1,false);
+                Time.sleep((int) (variables[0] * 1000 * forwConst));
+            }
+            else if (variables[2] < 0){
+                bench.Motor(0,0,-1,false);
+                Time.sleep((int) (-variables[0] * 1000 * backConst));
+            }
+            bench.Motor(0,0,0,false);
+            Time.sleep(2000);
             telemetry.addData("success", true);
 
 

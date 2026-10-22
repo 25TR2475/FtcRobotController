@@ -4,6 +4,7 @@ import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
+import com.qualcomm.robotcore.hardware.DcMotorEx;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 
 import org.firstinspires.ftc.ftccommon.external.OnCreateEventLoop;
@@ -11,10 +12,10 @@ import org.firstinspires.ftc.ftccommon.external.OnCreateEventLoop;
 @TeleOp
 public class MotorTest extends OpMode{
 
-    private DcMotor LFmotor;
-    private DcMotor LBmotor;
-    private DcMotor RFmotor;
-    private DcMotor RBmotor;
+    private DcMotorEx LFmotor;
+    private DcMotorEx LBmotor;
+    private DcMotorEx RFmotor;
+    private DcMotorEx RBmotor;
 
     @Override
     public void init(){
@@ -23,14 +24,14 @@ public class MotorTest extends OpMode{
 
 
     public void init2(HardwareMap hwMap){
-        LFmotor = hwMap.get(DcMotor.class, "leftFront");
-        LFmotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-        LBmotor = hwMap.get(DcMotor.class, "leftBack");
-        LBmotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-        RFmotor = hwMap.get(DcMotor.class, "rightFront");
-        RFmotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-        RBmotor = hwMap.get(DcMotor.class, "rightBack");
-        RBmotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        LFmotor = hwMap.get(DcMotorEx.class, "leftFront");
+        LFmotor.setMode(DcMotorEx.RunMode.RUN_USING_ENCODER);
+        LBmotor = hwMap.get(DcMotorEx.class, "leftBack");
+        LBmotor.setMode(DcMotorEx.RunMode.RUN_USING_ENCODER);
+        RFmotor = hwMap.get(DcMotorEx.class, "rightFront");
+        RFmotor.setMode(DcMotorEx.RunMode.RUN_USING_ENCODER);
+        RBmotor = hwMap.get(DcMotorEx.class, "rightBack");
+        RBmotor.setMode(DcMotorEx.RunMode.RUN_USING_ENCODER);
     }
 
     @Override

@@ -81,7 +81,7 @@ public class FlywheelTest extends OpMode {
         double error = targetVelocity - currentVelocity;
 
 
-        telemetry.addData("Step Index","%.4f (B)", stepIndex);
+        telemetry.addData("Step Index","%.4d (B)", stepIndex);
         telemetry.addData("Target Velocity", targetVelocity);
         telemetry.addData("Current Velocity","%.2f",currentVelocity);
         telemetry.addData("Error (Abs)","%.2f",error);

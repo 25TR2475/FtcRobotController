@@ -36,6 +36,7 @@ public class FlywheelTest extends OpMode {
     @Override
     public void loop()
     {
+        //Toggle target velocity (900 - 1500)
         if (gamepad1.yWasPressed())
         {
             if (targetVelocity == highVelocity)
@@ -48,23 +49,28 @@ public class FlywheelTest extends OpMode {
             }
         }
 
-        if (gamepad1.bWasPressed())
+        //Circle pressed changes step size
+        if (gamepad1.circleWasPressed())
         {
             stepIndex = (stepIndex + 1) % stepSizes.length;
         }
 
+        //DPad left decrements F value
         if (gamepad1.dpadLeftWasPressed())
         {
             F -= stepSizes[stepIndex];
         }
+        //DPad right increments F value
         if (gamepad1.dpadRightWasPressed())
         {
             F += stepSizes[stepIndex];
         }
+        //DPad up increments P value
         if (gamepad1.dpadUpWasPressed())
         {
             P += stepSizes[stepIndex];
         }
+        //DPad down decrements P value
         if (gamepad1.dpadDownWasPressed())
         {
             P -= stepSizes[stepIndex];

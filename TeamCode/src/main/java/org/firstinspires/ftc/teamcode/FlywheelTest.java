@@ -24,7 +24,7 @@ public class FlywheelTest extends OpMode {
     @Override
     public void init()
     {
-        flywheelMotor = hardwareMap.get(DcMotorEx.class, "leftFront");
+        flywheelMotor = hardwareMap.get(DcMotorEx.class, "Flywheel");
         flywheelMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         flywheelMotor.setDirection(DcMotorSimple.Direction.REVERSE);
 
@@ -79,7 +79,6 @@ public class FlywheelTest extends OpMode {
         //new PIDF coefficients
         PIDFCoefficients pidfCoefficients = new PIDFCoefficients(P, 0, 0, F);
         flywheelMotor.setPIDFCoefficients(DcMotorEx.RunMode.RUN_USING_ENCODER, pidfCoefficients);
-
         // set velocity
         flywheelMotor.setVelocity(targetVelocity);
 
@@ -87,7 +86,7 @@ public class FlywheelTest extends OpMode {
         double error = targetVelocity - currentVelocity;
 
 
-        telemetry.addData("Step Index", stepIndex);
+        telemetry.addData("Step Index", stepSizes[stepIndex]);
         telemetry.addData("Target Velocity", targetVelocity);
         telemetry.addData("Current Velocity","%.2f",currentVelocity);
         telemetry.addData("Error (Abs)","%.2f",error);

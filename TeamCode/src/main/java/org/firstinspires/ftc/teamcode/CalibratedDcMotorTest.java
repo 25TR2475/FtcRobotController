@@ -5,15 +5,15 @@ import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorEx;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
-import com.qualcomm.robotcore.hardware.PIDFCoefficients;
-import org.firstinspires.ftc.teamcode.Mechanisms.MotorTest;
+
+import org.firstinspires.ftc.teamcode.Mechanisms.MotorControl;
 
 @TeleOp
 public class CalibratedDcMotorTest extends OpMode
 {
 
     public DcMotorEx flywheelMotor;
-    MotorTest bench = new MotorTest();
+    MotorControl bench = new MotorControl();
 
     @Override
     public void init()

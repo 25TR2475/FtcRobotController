@@ -1,16 +1,12 @@
 package org.firstinspires.ftc.teamcode.Mechanisms;
 
-import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
-import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorEx;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 
-import org.firstinspires.ftc.ftccommon.external.OnCreateEventLoop;
-
 @TeleOp
-public class MotorTest extends OpMode{
+public class MotorControl extends OpMode{
 
     private DcMotorEx LFmotor;
     private DcMotorEx LBmotor;

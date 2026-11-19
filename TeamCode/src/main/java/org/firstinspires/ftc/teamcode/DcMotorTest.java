@@ -3,13 +3,13 @@ package org.firstinspires.ftc.teamcode;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
-import org.firstinspires.ftc.teamcode.Mechanisms.MotorTest;
+import org.firstinspires.ftc.teamcode.Mechanisms.MotorControl;
 
 
 @TeleOp
 public class DcMotorTest extends OpMode {
 
-    MotorTest bench = new MotorTest();
+    MotorControl bench = new MotorControl();
 
     @Override
     public void init(){

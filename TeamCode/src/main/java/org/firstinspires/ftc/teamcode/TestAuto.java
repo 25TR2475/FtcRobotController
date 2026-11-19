@@ -1,21 +1,16 @@
 package org.firstinspires.ftc.teamcode;
 
-import static org.firstinspires.ftc.robotcore.external.BlocksOpModeCompanion.hardwareMap;
-
-import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
-import org.firstinspires.ftc.teamcode.Mechanisms.MotorTest;
+import org.firstinspires.ftc.teamcode.Mechanisms.MotorControl;
 import org.firstinspires.ftc.teamcode.Mechanisms.ourTime;
-
-import java.util.Arrays;
 
 @TeleOp
 public class TestAuto extends OpMode {
     ElapsedTime timer = new ElapsedTime();
-    MotorTest bench = new MotorTest();
+    MotorControl bench = new MotorControl();
 
     /////////////////////////////
     ourTime Time = new ourTime();

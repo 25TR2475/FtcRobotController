@@ -11,16 +11,13 @@ import com.qualcomm.robotcore.hardware.PIDFCoefficients;
 public class FlywheelTest extends OpMode {
 
     public DcMotorEx flywheelMotor;
+    private int targetVelocity = 0;
+    private double F = 0;
+    private double P = 0;
 
-    double highVelocity = 1500;
-
-    double lowVelocity = 900;
-    double targetVelocity = highVelocity;
-    double F = 0;
-    double P = 0;
-
-    double[] stepSizes = {10.0, 1.0, 0.1, 0.001, 0.0001};
-    int stepIndex = 1;
+    private double[] PFstepSizes = {10.0, 1.0, 0.1, 0.001, 0.0001};
+    private int[] wheelStepSizes = {1000,100,10,1, 0};
+    private int stepIndex = 1;
     @Override
     public void init()
     {
@@ -36,44 +33,39 @@ public class FlywheelTest extends OpMode {
     @Override
     public void loop()
     {
-        //Toggle target velocity (900 - 1500)
-        if (gamepad1.yWasPressed())
-        {
-            if (targetVelocity == highVelocity)
-            {
-                targetVelocity = lowVelocity;
-            }
-            else
-            {
-                targetVelocity = highVelocity;
-            }
-        }
+
 
         //Circle pressed changes step size
         if (gamepad1.circleWasPressed())
         {
-            stepIndex = (stepIndex + 1) % stepSizes.length;
+            stepIndex = (stepIndex + 1) % PFstepSizes.length;
         }
 
         //DPad left decrements F value
         if (gamepad1.dpadLeftWasPressed())
         {
-            F -= stepSizes[stepIndex];
+            F -= PFstepSizes[stepIndex];
         }
         //DPad right increments F value
         if (gamepad1.dpadRightWasPressed())
         {
-            F += stepSizes[stepIndex];
+            F += PFstepSizes[stepIndex];
         }
         //DPad up increments P value
         if (gamepad1.dpadUpWasPressed())
         {
-            P += stepSizes[stepIndex];
+            P += PFstepSizes[stepIndex];
         }
         //DPad down decrements P value
         if (gamepad1.dpadDownWasPressed())
         {
-            P -= stepSizes[stepIndex];
+            P -= PFstepSizes[stepIndex];
+        }
+        if(gamepad1.triangleWasPressed()){
+            targetVelocity += wheelStepSizes[stepIndex];
+        }
+        if(gamepad1.crossWasPressed()){
+            targetVelocity -= wheelStepSizes[stepIndex];
         }
 
         //new PIDF coefficients
@@ -86,7 +78,7 @@ public class FlywheelTest extends OpMode {
         double error = targetVelocity - currentVelocity;
 
 
-        telemetry.addData("Step Index", stepSizes[stepIndex]);
+        telemetry.addData("Step Index", PFstepSizes[stepIndex]);
         telemetry.addData("Target Velocity", targetVelocity);
         telemetry.addData("Current Velocity","%.2f",currentVelocity);
         telemetry.addData("Error (Abs)","%.2f",error);

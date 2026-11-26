@@ -15,6 +15,8 @@ public class FlywheelTest extends OpMode {
     private double F = 0;
     private double P = 0;
 
+    private Boolean alternator = false;
+
     private double[] PFstepSizes = {10.0, 1.0, 0.1, 0.001, 0.0001};
     private int[] wheelStepSizes = {1000,100,10,1, 0};
     private int stepIndex = 1;
@@ -67,6 +69,16 @@ public class FlywheelTest extends OpMode {
         if(gamepad1.crossWasPressed()){
             targetVelocity -= wheelStepSizes[stepIndex];
         }
+        if(gamepad1.squareWasPressed()){
+            if(alternator){
+                targetVelocity += 300;
+                alternator = !alternator;
+            }
+            else{
+                targetVelocity -= 300;
+                alternator = !alternator;
+            }
+        }
 
         //new PIDF coefficients
         PIDFCoefficients pidfCoefficients = new PIDFCoefficients(P, 0, 0, F);
@@ -77,12 +89,13 @@ public class FlywheelTest extends OpMode {
         double currentVelocity = flywheelMotor.getVelocity();
         double error = targetVelocity - currentVelocity;
 
-
+        telemetry.addData("alternator", alternator);
         telemetry.addData("Step Index", PFstepSizes[stepIndex]);
         telemetry.addData("Target Velocity", targetVelocity);
         telemetry.addData("Current Velocity","%.2f",currentVelocity);
         telemetry.addData("Error (Abs)","%.2f",error);
         telemetry.addData("Tuning P","%.4f (DPad U/D)",P);
         telemetry.addData("Tuning F","%.4f (Dpad L/R)",F);
+
     }
 }

@@ -18,7 +18,7 @@ public class FlywheelTest extends OpMode {
     private Boolean alternator = false;
 
     private double[] PFstepSizes = {10.0, 1.0, 0.1, 0.001, 0.0001};
-    private int[] wheelStepSizes = {1000,100,10,1, 0};
+    private int[] wheelStepSizes = { 1000, 100, 10, 1, 0 };
     private int stepIndex = 1;
     @Override
     public void init()

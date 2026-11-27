@@ -37,16 +37,16 @@ public class MotorControl extends OpMode{
 
     public void Motor(double speedY, double speedX, double rotation, boolean boost){
         speedY = -speedY;
-        double LF = ((speedY + speedX) / 2);
-        double LB = ((speedY - speedX) / 2);
-        double RF = -(speedY - speedX) / 2;
-        double RB = -(speedY + speedX) / 2;
+        double LF = -(speedY + speedX) / 2;
+        double LB = (speedY - speedX) / 2;
+        double RF = (speedY - speedX) / 2;
+        double RB = (speedY + speedX) / 2;
 
         if(rotation != 0){
-            LF = (LF + rotation) / 2;
+            LF = (LF - rotation) / 2;
             LB = (LB + rotation) / 2;
-            RF = (RF + rotation) / 2;
-            RB = (RB + rotation) / 2;
+            RF = (RF - rotation) / 2;
+            RB = (RB - rotation) / 2;
         }
 
         if(boost){
